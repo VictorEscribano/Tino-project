@@ -2,6 +2,9 @@
 
 This project involves using a Raspberry Pi with a connected USB camera and a water pump. The Raspberry Pi streams video using Flask at the /cam endpoint and reads commands at the /detection endpoint. A remote computer performs image processing to detect cats using YOLO and a Roboflow dataset. If a cat is detected for more than 5 seconds, the water pump is activated and the /detection value is set to 1 until the cat is no longer detected for 5 seconds. When no cat is detected for more than 5 seconds, the /detection value is set to 0.
 
+![esquema](https://github.com/VictorEscribano/Tino-project/assets/70441479/2f6b2be6-8e20-4d11-807a-204b67336219)
+
+
 ## Prerequisites
 
 Before running the project, you need to ensure the following:
