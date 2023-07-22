@@ -1,12 +1,23 @@
-# Encargado de stream de video y leer comandos
-
+import RPi.GPIO as GPIO
 import cv2
 import numpy as np
 import time
-from flask import Flask, Response, request, render_template
+from flask import Flask, Response, request
 
 app = Flask(__name__)
 pump_status = 0  # Initial pump status
+
+# Set up GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(23, GPIO.OUT)
+
+# Function to turn the pump on
+def turn_pump_on():
+    GPIO.output(23, GPIO.HIGH)
+
+# Function to turn the pump off
+def turn_pump_off():
+    GPIO.output(23, GPIO.LOW)
 
 # Function to initialize the USB camera
 def init_camera():
@@ -20,11 +31,11 @@ def stream_video(camera):
     while True:
         if pump_status == 1:
             # Activate water pump
-            # Code to activate the water pump goes here
+            turn_pump_on()
             print("Water pump activated!")
         else:
             # Deactivate water pump
-            # Code to deactivate the water pump goes here
+            turn_pump_off()
             print("Water pump deactivated!")
 
         # Capture a video frame from the USB camera
@@ -35,10 +46,6 @@ def stream_video(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
 
-
-@app.route('/')
-def index():
-    return render_template('index.html', pump_status=pump_status)
 
 @app.route('/cam')
 def video_feed():
