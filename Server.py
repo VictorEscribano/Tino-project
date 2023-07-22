@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 import time
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 
 app = Flask(__name__)
 pump_status = 0  # Initial pump status
@@ -11,7 +11,6 @@ pump_status = 0  # Initial pump status
 # Function to initialize the USB camera
 def init_camera():
     camera = cv2.VideoCapture(0)  # Use the correct camera index (usually 0 for the first USB camera)
-    time.sleep(2)  # Warm-up time for the camera
     return camera
 
 # Function to stream video frames from the USB camera
@@ -36,7 +35,10 @@ def stream_video(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
 
-        time.sleep(0.1)  # Adjust the delay between frames as needed
+
+@app.route('/')
+def index():
+    return render_template('index.html', pump_status=pump_status)
 
 @app.route('/cam')
 def video_feed():
@@ -52,4 +54,4 @@ def detection_status():
     return str(pump_status)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='192.168.1.39', port=500)

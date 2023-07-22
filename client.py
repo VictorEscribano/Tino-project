@@ -4,6 +4,8 @@ import cv2
 import numpy as np
 import time
 
+raspberrypi_ip = '192.168.1.39'
+
 # Function to perform cat detection on a frame
 def detect_cats(frame):
     # Perform cat detection using YOLO and the Roboflow dataset
@@ -13,18 +15,20 @@ def detect_cats(frame):
 
 # Function to update the /detection endpoint
 def update_detection_status(status):
+    global raspberrypi_ip
     # Update the /detection endpoint by sending a POST request
-    detection_endpoint = 'http://raspberrypi_ip:5000/detection'  # Replace with your Raspberry Pi's IP address
+    detection_endpoint = 'http://' + raspberrypi_ip + ':5000/detection'  # Replace with your Raspberry Pi's IP address
     payload = {'value': status}
     requests.post(detection_endpoint, data=payload)
 
 # Main loop to read frames from the /cam endpoint and perform cat detection
 def process_video_stream():
+    global raspberrypi_ip
     cat_detected = False
     last_detection_time = time.time()
 
     # Continuously read frames from the /cam endpoint
-    video_stream_url = 'http://raspberrypi_ip:5000/cam'  # Replace with your Raspberry Pi's IP address
+    video_stream_url = 'http://' + raspberrypi_ip + ':5000/cam'  # Replace with your Raspberry Pi's IP address
     stream = requests.get(video_stream_url, stream=True)
 
     for chunk in stream.iter_content(chunk_size=4096):

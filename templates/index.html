@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fuente Personal del Tino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Fuente Personal del Tino 😺</h1>
+        <img class="cat-image" src="https://i.imgur.com/k5SyHiV.gif" alt="Cat GIF">
+    </div>
+    <div class="container">
+        <img id="video-stream" src="{{ url_for('video_feed') }}" alt="Video Stream">
+        <div class="buttons">
+            <button id="activate-button">Activar Bomba</button>
+            <button id="deactivate-button">Deactivar Bomba</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
