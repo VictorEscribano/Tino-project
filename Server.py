@@ -10,15 +10,24 @@ pump_status = 0  # Initial pump status
 
 # Set up GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.OUT)
+Ena = 18
+In1 = 23
+GPIO.setup(Ena, GPIO.OUT)
+GPIO.setup(In1, GPIO.OUT)
+pwm = GPIO.PWM(Ena, 100)
+pwm.start(0)
 
 # Function to turn the pump on
 def turn_pump_on():
-    GPIO.output(23, GPIO.HIGH)
+    #GPIO.output(Ena, GPIO.HIGH)
+    GPIO.output(In1, GPIO.HIGH)
+    pwm.ChangeDutyCycle(100) #half speed, maximum is 100
 
 # Function to turn the pump off
 def turn_pump_off():
-    GPIO.output(23, GPIO.LOW)
+    #GPIO.output(Ena, GPIO.LOW)
+    GPIO.output(In1, GPIO.LOW)
+    pwm.ChangeDutyCycle(0)
 
 # Function to initialize the USB camera
 def init_camera():
