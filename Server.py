@@ -1,8 +1,9 @@
+from pydoc import render_doc
 import RPi.GPIO as GPIO
 import cv2
 import numpy as np
 import time
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 
 app = Flask(__name__)
 pump_status = 0  # Initial pump status
@@ -46,6 +47,9 @@ def stream_video(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
 
+@app.route('/')
+def index():
+    return render_template('index.html', pump_status=pump_status )
 
 @app.route('/cam')
 def video_feed():
@@ -61,4 +65,4 @@ def detection_status():
     return str(pump_status)
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.39', port=500)
+    app.run(host='192.168.1.38', port=5000)
