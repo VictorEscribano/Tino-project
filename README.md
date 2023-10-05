@@ -6,6 +6,10 @@ This project involves using a Raspberry Pi with a connected USB camera and a wat
 
 ## Prerequisites
 
+https://github.com/VictorEscribano/Tino-project/assets/70441479/e4eea186-d7b8-4560-8dcb-37f724ba3476
+
+
+
 Before running the project, you need to ensure the following:
 
 - Raspberry Pi with USB camera support (tested on Raspberry Pi 3 and 4)
