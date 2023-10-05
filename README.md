@@ -1,12 +1,15 @@
-# Raspberry Pi Cat Detection and Water Pump Control
-
-This project involves using a Raspberry Pi with a connected USB camera and a water pump. The Raspberry Pi streams video using Flask at the /cam endpoint and reads commands at the /detection endpoint. A remote computer performs image processing to detect cats using YOLO and a Roboflow dataset. If a cat is detected for more than 5 seconds, the water pump is activated and the /detection value is set to 1 until the cat is no longer detected for 5 seconds. When no cat is detected for more than 5 seconds, the /detection value is set to 0.
-
-
-https://github.com/VictorEscribano/Tino-project/assets/70441479/22f6a664-adaa-4694-8c57-17f71d606dc9
-
-
-![esquema](https://github.com/VictorEscribano/Tino-project/assets/70441479/93677cfb-76e6-49df-9709-4e9489f51c19)
+<p align="center">
+  <h1 align="center">Raspberry Pi Cat Detection and Water Pump Control</h1>
+  <p align="center">
+    This project involves using a Raspberry Pi with a connected USB camera and a water pump. The Raspberry Pi streams video using Flask at the <code>/cam</code> endpoint and reads commands at the <code>/detection</code> endpoint. A remote computer performs image processing to detect cats using YOLO and a Roboflow dataset. If a cat is detected for more than 5 seconds, the water pump is activated and the <code>/detection</code> value is set to 1 until the cat is no longer detected for 5 seconds. When no cat is detected for more than 5 seconds, the <code>/detection</code> value is set to 0.
+  </p>
+  <p align="center">
+    <a href="https://github.com/VictorEscribano/Tino-project/assets/70441479/22f6a664-adaa-4694-8c57-17f71d606dc9">Project Link</a>
+  </p>
+  <p align="center">
+    <img src="https://github.com/VictorEscribano/Tino-project/assets/70441479/93677cfb-76e6-49df-9709-4e9489f51c19" alt="esquema">
+  </p>
+</p>
 
 ## Prerequisites
 
@@ -20,8 +23,10 @@ Before running the project, you need to ensure the following:
 
 1. Clone this repository to your Raspberry Pi.
 
-2. Intall requirements 
-```pip install -r requirements.txt```
+2. Install requirements:
+```bash
+pip install -r requirements.txt
+
 
 ## Raspberry Pi Setup
 Connect a USB camera and water pump to the Raspberry Pi.
