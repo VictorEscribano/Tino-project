@@ -22,7 +22,7 @@ Before running the project, you need to ensure the following:
 
 2. Intall requirements
  ```console
-```pip install -r requirements.txt```
+pip install -r requirements.txt
  ```
 
 ## Raspberry Pi Setup
