@@ -33,7 +33,9 @@ Clone this repository on the Raspberry Pi.
 Navigate to the project directory on the Raspberry Pi.
 Start the Flask app:
 
-```python server.py```
+```console
+python server.py
+```
 
 The video stream will be available at http://raspberrypi_ip:5000/cam, and the /detection endpoint will be used to control the water pump.
 
@@ -42,6 +44,8 @@ Clone this repository on the remote computer.
 ### Remote Computer Execution
 Navigate to the project directory on the remote computer.
 
-```python client.py```
+```console
+python client.py
+```
 
 The image processing server will read the video stream from the /cam endpoint on the Raspberry Pi, detect cats using YOLO, and control the water pump accordingly by setting the /detection value on the Raspberry Pi.
